@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/maugares/W2D5/issues"
   },
-  "homepage": "https://github.com/maugares/W2D5#readme"
+  "homepage": "https://github.com/maugares/W2D5#readme",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  }
 }
