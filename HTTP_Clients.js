@@ -15,5 +15,10 @@ Use the Fetch API to call https://swapi.co/api/people/3/.
 From the response object, get the URL in the property homeworld and fetch that URL as well.
 console.log the name of the planet. Do all of this in a single chain of promises. */
 
-const fetchObject = http "https://swapi.co/api/people/3/"
+const fetch = require("node-fetch")
+
+const fetchObject = fetch("https://swapi.co/api/people/3/")
+  .then(response => response.json())
+  .then(planet => console.log(`URL: ${planet.url} \nPlanet name: ${planet.name}`))
+
 
