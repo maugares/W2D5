@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id='person'></div>
+</body>
+<script>
+
+    // Consuming promises and calbacks
+
+    // Promises
+    fetch('https://swapi.co/api/people/1')
+        .then(response => response.json())
+        .then(json => {
+            // document.getElementById('person').innerText = json.name
+        })
+
+
+    // Callback
+    const oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", function(){
+        console.log(this.response);
+    });
+    oReq.open("GET", "https://swapi.co/api/people/1");
+    oReq.send();
+    
+    // Async / Await
+    const getLuke = async function(){
+        const response = await fetch('https://swapi.co/api/people/1')
+        const json = await response.json()
+
+        document.getElementById('person').innerText = json.name
+        // console.log(json)
+    }
+
+    getLuke()
+
+    // Later 
+    // Write promises and callbacks
+
+</script>
+</html>
+
+// With superagent
+
+const superagent = require('superagent')
+
+superagent.get('https://swapi.co/api/people/1')
+    .then(res => console.log(res.body))
+    .catch(error => {
+        console.log('OH NOES!')
+        console.log(error)
+    })
+
+async function getLuke(){
+    try {
+        const response = await superagent('https://swapi.co/api/poople/1')
+        console.log(response.body)
+    } catch (error) {
+        console.log('OH NOES!')
+        console.log(error)
+    }
+}
+
+getLuke()
+
+//////////
+
+/ What are request
+
+// How to 'consume' Promises i.e. .then & .catch
+
+// How to create promise yourself
+const user = {
+    stormtrooper: false
+}
+
+const myFakeRequest = new Promise((resolve, reject) => {
+    const luke = {
+        name: 'Luke',
+        weopon: 'Lightsabre'
+    }
+
+    if(user.stormtrooper === true){
+        reject(new Error('These are not the droids you\'re looking for'))
+    }
+
+    // simple resolve
+    resolve(luke)
+
+    // fake that it takes a while
+    // setTimeout(() => {
+    //     resolve(luke)
+    // }, 10000)
+
+    // reject before resolve, means rejected. Becaue you cannot do both
+    // setTimeout(() => {
+    //     reject(new Error('These are not the droids you\'re looking for'))
+    // }, 2000)    
+    
+})
+
+// myFakeRequest
+//     .then(person => console.log(person))
+//     .catch(error => console.log(error))
+
+
+function get(url){
+    return new Promise((resolve, reject) => {
+        if(url.includes('cat')){
+            resolve({ name: 'fluffy', breed: 'persian'})
+        }
+
+        reject(new Error('sorry, we only have cats here'))
+    })
+}
+
+get('www.cat.com')
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
