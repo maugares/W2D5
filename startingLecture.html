@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+
+  // Consuming promises / callbacks -- common
+
+  // Asynchronous request
+  
+  // Promise
+  fetch('https://swap1.co/api/people/1')
+  .then(response => respose.json())
+  .then(json => {
+    document.getElementById('person').innerText = json.name
+  })
+
+  // Callbacks
+  const oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", function(){
+    console.log(JSON.parse(this.response));
+  });
+  oReq.open("GET", "https://swap1.co/api/people/1");
+  oReq.send();
+
+  // Async / await
+  const getLuke = async function(){
+    const response = await fetch("https://swap1.co/api/people/1");
+    const json = await.response.json();
+    document.getElementById('person').innerText = json.name
+  }
+
+  // Writting promisses and callbacks
+
+</script>
+</html>

@@ -1,0 +1,86 @@
+// install HHTPie
+
+// Request infromation from the api in the console using HTTPie
+
+  // Which headers do you recognize?
+
+    - (first line) - statusCode and statusMeaning
+    - Date:
+    - Content:
+
+
+  // Which status code and message does it return? What do they mean?
+
+    Status code = 200
+    Message = OK
+    
+    Message meaning:
+    200 OK
+    The request has succeeded.
+
+    source: (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+
+
+  // Which data type is returned in the body?
+
+    Content-Type: text/html; charset=utf-8
+
+-------------------------------------------------------
+
+// Exploring different apis
+
+Using HTTPie create requests for the following urls and write down the STATUS CODE, the STATUS MESSAGE and the DATA TYPE that the request returns
+
+https://api.adviceslip.com/advice
+
+STATUS CODE: 200
+STATUS MESSAGE: OK
+DATA TYPE: text/html
+
+https://www.rijksmuseum.nl/api/nl/collection
+
+STATUS CODE: 403
+STATUS MESSAGE: Forbidden
+DATA TYPE: application/json 
+
+https://api.spotify.com/v1/albums
+
+STATUS CODE: 401
+STATUS MESSAGE: Unauthorized
+DATA TYPE: text/html; application/json
+
+https://jobs.github.com/positions\?description\=node\&location\=amsterdam
+
+STATUS CODE: 200
+STATUS MESSAGE: OK
+DATA TYPE: text/html
+
+----------------------------------------------------------
+
+//Exploring different paths
+
+Compare these two urls: 
+1: https://official-joke-api.appspot.com/jokes/random
+2: https://official-joke-api.appspot.com/random_ten
+Answer the following questions:
+
+- What is the host that will be send along with request for each of them?
+  1: official-joke-api.appspot.com
+  2: official-joke-api.appspot.com
+
+- Which path?
+  1: https://official-joke-api.appspot.com/jokes/random
+  2: https://official-joke-api.appspot.com/random_ten 
+
+- Which method?
+  1: None - by default GET
+  2: None - by default GET
+
+- Which data type is returned in the body of the response?
+  1: JSON
+  2: JSON
+
+----------------------------------------------------------
+
+// Use HTTPie to create a request for the url: http://api.postcodedata.nl/v1/postcode/\?postcode\=1076GR\&streetnumber\=201\&ref\=domeinnaam.nl\&type\=json
